@@ -2,10 +2,7 @@ package com.designpaterns.cmp.infrastructure.database.model.invoice;
 
 import java.util.Date;
 
-import com.designpaterns.cmp.infrastructure.database.model.user.User;
-
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import lombok.NoArgsConstructor;

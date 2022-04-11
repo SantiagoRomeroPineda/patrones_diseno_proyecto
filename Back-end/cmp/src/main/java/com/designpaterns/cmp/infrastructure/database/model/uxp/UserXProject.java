@@ -16,9 +16,9 @@ public class UserXProject {
     @Id
     private String _id;
     @DBRef
-    User user;
+	User user;
     @DBRef
-    Project project;
+	Project project;
     private String role;
     private String priviliges;
 
