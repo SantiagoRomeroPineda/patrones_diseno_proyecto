@@ -1,5 +1,6 @@
 package com.designpaterns.cmp.core.usecase.impl;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.http.HttpStatus;
@@ -21,4 +22,8 @@ public class ManageMembershipUseCase {
 		throw new ResponseStatusException(HttpStatus.NOT_FOUND, "membership not found");
 	}
 
+	public List<Membership> findAll() {
+		return membershipProvider.findAll();
+
+	}
 }

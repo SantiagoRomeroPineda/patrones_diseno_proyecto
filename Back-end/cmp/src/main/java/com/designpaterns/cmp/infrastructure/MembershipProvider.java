@@ -1,5 +1,6 @@
 package com.designpaterns.cmp.infrastructure;
 
+import java.util.List;
 import java.util.Optional;
 
 import com.designpaterns.cmp.infrastructure.database.model.membership.Membership;
@@ -13,5 +14,9 @@ public class MembershipProvider {
 
 	public Optional<Membership> findById(final String id){
 		return membershipRepository.findById(id);
+	}
+
+	public List<Membership> findAll() {
+		return membershipRepository.findAll();
 	}
 }
