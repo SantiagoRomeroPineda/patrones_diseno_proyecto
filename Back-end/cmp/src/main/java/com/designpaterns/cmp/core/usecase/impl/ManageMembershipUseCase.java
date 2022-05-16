@@ -24,6 +24,5 @@ public class ManageMembershipUseCase {
 
 	public List<Membership> findAll() {
 		return membershipProvider.findAll();
-
 	}
 }

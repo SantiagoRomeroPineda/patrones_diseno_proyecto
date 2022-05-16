@@ -7,4 +7,6 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 public interface UserXProjectRepository extends MongoRepository<UserXProject, String> {
 
 	List<UserXProject> findAllByUser__id(final String userId);
+
+
 }
