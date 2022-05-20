@@ -12,7 +12,6 @@ import com.designpaterns.cmp.infrastructure.UserProvider;
 import com.designpaterns.cmp.infrastructure.UserXProjectProvider;
 import com.designpaterns.cmp.infrastructure.database.model.file.FileRepository;
 import com.designpaterns.cmp.infrastructure.database.model.invoice.InvoiceRepository;
-import com.designpaterns.cmp.infrastructure.database.model.membership.Membership;
 import com.designpaterns.cmp.infrastructure.database.model.membership.MembershipRepository;
 import com.designpaterns.cmp.infrastructure.database.model.project.ProjectRepository;
 import com.designpaterns.cmp.infrastructure.database.model.user.UserRepository;
@@ -24,32 +23,32 @@ import com.designpaterns.cmp.infrastructure.database.model.uxp.UserXProjectRepos
 public class ProviderSetUp {
 
 	@Bean
-	public FileProvider fileProvider(final FileRepository fileRepository){
+	public FileProvider fileProvider(final FileRepository fileRepository) {
 		return new FileProvider(fileRepository);
 	}
 
 	@Bean
-	public InvoiceProvider invoiceProvider(final InvoiceRepository invoiceRepository){
+	public InvoiceProvider invoiceProvider(final InvoiceRepository invoiceRepository) {
 		return new InvoiceProvider(invoiceRepository);
 	}
 
 	@Bean
-	public MembershipProvider membershipProvider(final MembershipRepository membershipRepository){
+	public MembershipProvider membershipProvider(final MembershipRepository membershipRepository) {
 		return new MembershipProvider(membershipRepository);
 	}
 
 	@Bean
-	public ProjectProvider projectProvider(final ProjectRepository projectRepository){
+	public ProjectProvider projectProvider(final ProjectRepository projectRepository) {
 		return new ProjectProvider(projectRepository);
 	}
 
 	@Bean
-	public UserProvider userProvider(final UserRepository userRepository){
+	public UserProvider userProvider(final UserRepository userRepository) {
 		return new UserProvider(userRepository);
 	}
 
 	@Bean
-	public UserXProjectProvider userXProjectProvider(final UserXProjectRepository userXProjectRepository){
+	public UserXProjectProvider userXProjectProvider(final UserXProjectRepository userXProjectRepository) {
 		return new UserXProjectProvider(userXProjectRepository);
 	}
 

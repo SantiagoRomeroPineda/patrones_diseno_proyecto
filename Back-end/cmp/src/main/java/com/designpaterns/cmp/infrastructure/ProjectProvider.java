@@ -1,5 +1,6 @@
 package com.designpaterns.cmp.infrastructure;
 
+import java.util.List;
 import java.util.Optional;
 
 import com.designpaterns.cmp.infrastructure.database.model.project.Project;
@@ -11,12 +12,16 @@ public class ProjectProvider {
 
 	private final ProjectRepository projectRepository;
 
-	public void save(final Project project){
+	public void save(final Project project) {
 		projectRepository.save(project);
 	}
 
-	public Optional<Project> findById(final String projectId){
+	public Optional<Project> findById(final String projectId) {
 		return projectRepository.findById(projectId);
+	}
+
+	public List<Project> findAll() {
+		return projectRepository.findAll();
 	}
 
 }

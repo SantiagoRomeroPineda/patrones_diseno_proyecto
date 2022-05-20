@@ -1,0 +1,8 @@
+POST http://localhost:8080/project/624bc664d4a6b66715de68c3 HTTP/1.1
+content-type: application/json
+
+{
+    "name":"test_project",
+    "description": "This is a test",
+    "total_size": 20
+}
