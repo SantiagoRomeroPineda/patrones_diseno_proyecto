@@ -20,6 +20,7 @@ public class User {
     private String name;
     private String email;
     private String password;
+    private String token;
     @DBRef
     List<Invoice> invoices = new ArrayList<>();
     @DBRef
@@ -75,6 +76,14 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 
 }

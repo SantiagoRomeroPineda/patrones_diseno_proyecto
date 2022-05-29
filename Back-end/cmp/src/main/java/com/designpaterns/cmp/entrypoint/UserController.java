@@ -46,4 +46,13 @@ public class UserController {
 		return manageUserUseCase.getUserProjects(userId);
 	}
 
+	@PutMapping("/login")
+	public String login(@RequestBody User user) {
+		return manageUserUseCase.login(user.getEmail(), user.getPassword());
+	}
+
+	@PostMapping("/signup")
+	public String singup(@RequestBody User user) {
+		return manageUserUseCase.signUp(user);
+	}
 }

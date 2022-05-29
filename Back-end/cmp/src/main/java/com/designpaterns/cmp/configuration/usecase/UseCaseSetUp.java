@@ -8,6 +8,7 @@ import com.designpaterns.cmp.core.usecase.impl.ManageUserUseCase;
 import com.designpaterns.cmp.core.usecase.impl.ManageMembershipUseCase;
 import com.designpaterns.cmp.core.usecase.impl.ManageProjectUseCase;
 import com.designpaterns.cmp.core.usecase.impl.ManageUserByProjectUseCase;
+import com.designpaterns.cmp.infrastructure.FileProvider;
 import com.designpaterns.cmp.infrastructure.InvoiceProvider;
 import com.designpaterns.cmp.infrastructure.MembershipProvider;
 import com.designpaterns.cmp.infrastructure.ProjectProvider;
@@ -37,8 +38,9 @@ public class UseCaseSetUp {
 
 	@Bean
 	public ManageProjectUseCase manageProjectUseCase(final ProjectProvider projectProvider,
-			final UserXProjectProvider userXProjectProvider, final UserProvider userProvider) {
-		return new ManageProjectUseCase(projectProvider, userXProjectProvider, userProvider);
+			final UserXProjectProvider userXProjectProvider, final UserProvider userProvider,
+			final FileProvider fileProvider) {
+		return new ManageProjectUseCase(projectProvider, userXProjectProvider, userProvider, fileProvider);
 	}
 
 	@Bean

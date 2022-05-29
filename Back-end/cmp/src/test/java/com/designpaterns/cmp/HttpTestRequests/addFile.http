@@ -1,0 +1,8 @@
+PUT http://localhost:8080/project/file/624bc411d4a6b66715de68b9 HTTP/1.1
+content-type: application/json
+
+{
+    "url_path":"www.i3.com/image01xzs",
+    "type": "mp4",
+    "size": 10
+}

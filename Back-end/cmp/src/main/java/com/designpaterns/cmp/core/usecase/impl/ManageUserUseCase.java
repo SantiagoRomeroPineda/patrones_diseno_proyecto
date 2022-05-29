@@ -55,4 +55,44 @@ public class ManageUserUseCase {
 		}
 		return userProjects;
 	}
+
+	public String login(final String email, final String password) {
+		String token = "";
+		User auxUser = findUserByEmailPass(email, password);
+		if (auxUser == null)
+			return "";
+		RandomString rs = new RandomString();
+		token = rs.nextString();
+		auxUser.setToken(token);
+		userProvider.save(auxUser);
+		return token;
+	}
+
+	public User findUserByEmailPass(final String email, final String password) {
+		List<User> users = userProvider.findAll();
+		for (User user : users) {
+			if (user.getEmail().equalsIgnoreCase(email) && user.getPassword().equals(password))
+				return user;
+		}
+		return null;
+	}
+
+	public String signUp(User user) {
+		String token = "";
+		Optional<User> user_op = userProvider.findByEmail(user.getEmail());
+
+		if (user_op.isPresent()) {
+			throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR,
+					"User already exist");
+		}
+
+		RandomString rs = new RandomString();
+		token = rs.nextString();
+
+		user.setToken(token);
+
+		userProvider.save(user);
+
+		return token;
+	}
 }

@@ -1,0 +1,6 @@
+PUT http://localhost:8080/project/file/remove/624bc411d4a6b66715de68b9 HTTP/1.1
+content-type: application/json
+
+{
+    "_id":"6292f30f922f6712172715d4"
+}

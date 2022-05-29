@@ -17,11 +17,15 @@ public class UserProvider {
 		return userRepository.findById(id);
 	}
 
-	public void save(User user){
+	public void save(User user) {
 		userRepository.save(user);
 	}
 
 	public List<User> findAll() {
 		return userRepository.findAll();
+	}
+
+	public Optional<User> findByEmail(String email) {
+		return userRepository.findByEmail(email);
 	}
 }
