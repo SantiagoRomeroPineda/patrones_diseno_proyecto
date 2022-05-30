@@ -24,7 +24,7 @@ public class UserController {
 	private final ManageUserUseCase manageUserUseCase;
 
 	@PostMapping("/create_user")
-	public boolean createUser(@RequestBody User user) {
+	public boolean createUser(@RequestBody User user) throws Exception {
 		manageUserUseCase.save(user);
 		return true;
 
@@ -47,12 +47,12 @@ public class UserController {
 	}
 
 	@PutMapping("/login")
-	public String login(@RequestBody User user) {
+	public String login(@RequestBody User user) throws Exception {
 		return manageUserUseCase.login(user.getEmail(), user.getPassword());
 	}
 
 	@PostMapping("/signup")
-	public String singup(@RequestBody User user) {
+	public String singup(@RequestBody User user) throws Exception {
 		return manageUserUseCase.signUp(user);
 	}
 }

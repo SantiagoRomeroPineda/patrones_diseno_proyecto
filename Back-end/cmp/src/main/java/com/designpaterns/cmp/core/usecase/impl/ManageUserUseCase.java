@@ -6,6 +6,9 @@ import java.util.Optional;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.server.ResponseStatusException;
+import com.designpaterns.cmp.core.usecase.impl.encrypt.encriptacion.ProcesoEncriptarAES;
+import com.designpaterns.cmp.core.usecase.impl.encrypt.implementacion.InterfaceMensajeEncriptacion;
+import com.designpaterns.cmp.core.usecase.impl.encrypt.implementacion.PuenteMensajeEncriptacion;
 import com.designpaterns.cmp.infrastructure.UserProvider;
 import com.designpaterns.cmp.infrastructure.database.model.membership.Membership;
 import com.designpaterns.cmp.infrastructure.database.model.project.Project;
@@ -22,7 +25,11 @@ public class ManageUserUseCase {
 	private final ManageUserByProjectUseCase manageUserByProjectUseCase;
 	private final ManageProjectUseCase manageProjectUseCase;
 
-	public void save(final User user) {
+	static String SEED ="HG58YZ3CR9123456";
+
+	public void save(final User user) throws Exception {
+		InterfaceMensajeEncriptacion FormatoAES = new PuenteMensajeEncriptacion(new ProcesoEncriptarAES());
+		user.setPassword(FormatoAES.EncryptarMensaje(user.getPassword(), SEED));
 		userProvider.save(user);
 	}
 
@@ -56,9 +63,10 @@ public class ManageUserUseCase {
 		return userProjects;
 	}
 
-	public String login(final String email, final String password) {
+	public String login(final String email, final String password) throws Exception {
 		String token = "";
-		User auxUser = findUserByEmailPass(email, password);
+		InterfaceMensajeEncriptacion FormatoAES = new PuenteMensajeEncriptacion(new ProcesoEncriptarAES());
+		User auxUser = findUserByEmailPass(email, FormatoAES.EncryptarMensaje(password, SEED));
 		if (auxUser == null)
 			return "";
 		RandomString rs = new RandomString();
@@ -77,15 +85,17 @@ public class ManageUserUseCase {
 		return null;
 	}
 
-	public String signUp(User user) {
+	public String signUp(User user) throws Exception {
 		String token = "";
 		Optional<User> user_op = userProvider.findByEmail(user.getEmail());
+		InterfaceMensajeEncriptacion FormatoAES = new PuenteMensajeEncriptacion(new ProcesoEncriptarAES());
 
 		if (user_op.isPresent()) {
 			throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR,
 					"User already exist");
 		}
 
+		user.setPassword(FormatoAES.EncryptarMensaje(user.getPassword(), SEED));
 		RandomString rs = new RandomString();
 		token = rs.nextString();
 
